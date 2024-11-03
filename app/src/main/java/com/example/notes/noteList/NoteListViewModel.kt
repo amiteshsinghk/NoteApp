@@ -25,21 +25,21 @@ class NoteListViewModel @Inject constructor(
     val searchText = savedStateHandle.getStateFlow("searchText", "")
     val isSearchActive = savedStateHandle.getStateFlow("isSearchActive", false)
 
-    init {
-        viewModelScope.launch {
-            (1..10).forEach {
-                noteDataSource.insertNode(
-                    Note(
-                        id = null,
-                        title = "Note $it",
-                        content = "content $it",
-                        colorHex = RedOrangeHex,
-                        created = DateTimeUtil.now()
-                    )
-                )
-            }
-        }
-    }
+//    init {
+//        viewModelScope.launch {
+//            (1..10).forEach {
+//                noteDataSource.insertNode(
+//                    Note(
+//                        id = null,
+//                        title = "Note $it",
+//                        content = "content $it",
+//                        colorHex = RedOrangeHex,
+//                        created = DateTimeUtil.now()
+//                    )
+//                )
+//            }
+//        }
+//    }
 
     val state = combine(notes,searchText,isSearchActive){notes,searchText,isSearchActive ->
         NoteListState(

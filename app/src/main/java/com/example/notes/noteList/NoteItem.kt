@@ -70,7 +70,8 @@ fun NoteItem(
         Spacer(modifier = Modifier.height(16.dp))
         Text(
             text = note.content,
-            fontWeight = FontWeight.Light
+            fontWeight = FontWeight.Light,
+            maxLines = 5,
         )
         Spacer(modifier = Modifier.height(16.dp))
             Text(
