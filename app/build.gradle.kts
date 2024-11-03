@@ -72,8 +72,11 @@ dependencies {
 
     implementation(libs.hilt)
     kapt(libs.kapt)
+    implementation(libs.hilt.navigation)
 
     implementation(libs.sql.delight)
+    implementation(project(":mydatabase"))
+    implementation(libs.date.time)
 }
 //kapt {
 //    correctErrorTypes =true

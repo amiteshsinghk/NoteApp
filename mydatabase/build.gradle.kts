@@ -33,14 +33,6 @@ android {
     }
 }
 
-sqldelight {
-    databases {
-        create("NodeDatabase") {
-            packageName.set("com.example")
-        }
-    }
-}
-
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -51,4 +43,12 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.sql.delight)
     implementation(libs.date.time)
+}
+
+sqldelight {
+    databases {
+        create("NoteDatabase") {
+            packageName.set("com.example.mydatabase.sqldelight.database")
+        }
+    }
 }
