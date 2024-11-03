@@ -1,6 +1,6 @@
 📝 **Note Application**
 
-A beautifully crafted Note-taking application built with Jetpack Compose, following the MVVM clean architecture, and powered by SQLDelight for efficient data management.
+A beautifully crafted Note-taking application built with **Jetpack Compose**, following the MVVM clean architecture, and powered by SQLDelight for efficient data management.
 
 ✨ **Features**
 
