@@ -77,6 +77,7 @@ dependencies {
     implementation(libs.sql.delight)
     implementation(project(":mydatabase"))
     implementation(libs.date.time)
+    implementation(libs.androidx.navigation)
 }
 //kapt {
 //    correctErrorTypes =true

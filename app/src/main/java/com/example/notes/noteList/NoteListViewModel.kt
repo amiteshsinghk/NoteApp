@@ -6,8 +6,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.mydatabase.domain.note.Note
 import com.example.mydatabase.domain.note.NoteDataSource
 import com.example.mydatabase.domain.note.SearchNotesUseCase
-import com.example.mydatabase.domain.time.DateTimeUtil
-import com.example.mydatabase.presentation.RedOrangeHex
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
@@ -19,55 +17,39 @@ import javax.inject.Inject
 class NoteListViewModel @Inject constructor(
     private val noteDataSource: NoteDataSource,
     private val savedStateHandle: SavedStateHandle
-): ViewModel() {
+) : ViewModel() {
     private val searchNotes = SearchNotesUseCase()
     val notes = savedStateHandle.getStateFlow("notes", emptyList<Note>())
-    val searchText = savedStateHandle.getStateFlow("searchText", "")
-    val isSearchActive = savedStateHandle.getStateFlow("isSearchActive", false)
+    private val searchText = savedStateHandle.getStateFlow("searchText", "")
+    private val isSearchActive = savedStateHandle.getStateFlow("isSearchActive", false)
 
-    init {
-        viewModelScope.launch {
-            (1..10).forEach {
-                noteDataSource.insertNode(
-                    Note(
-                        id = null,
-                        title = "Note $it",
-                        content = "content $it",
-                        colorHex = RedOrangeHex,
-                        created = DateTimeUtil.now()
-                    )
-                )
-            }
-        }
-    }
-
-    val state = combine(notes,searchText,isSearchActive){notes,searchText,isSearchActive ->
+    val state = combine(notes, searchText, isSearchActive) { notes, searchText, isSearchActive ->
         NoteListState(
-            notes = searchNotes.execute(notes,searchText),
+            notes = searchNotes.execute(notes, searchText),
             searchText = searchText,
             isSearchActive = isSearchActive
         )
 
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), NoteListState())
 
-    fun loadNotes(){
+    fun loadNotes() {
         viewModelScope.launch {
             savedStateHandle["notes"] = noteDataSource.getAllNotes()
         }
     }
 
-    fun onSearchTextChange(text: String){
+    fun onSearchTextChange(text: String) {
         savedStateHandle["searchText"] = text
     }
 
-    fun onToggleSearch(){
+    fun onToggleSearch() {
         savedStateHandle["isSearchActive"] = !isSearchActive.value
-        if (!isSearchActive.value){
+        if (!isSearchActive.value) {
             savedStateHandle["searchText"] = ""
         }
     }
 
-    fun deleteNoteById(id: Long){
+    fun deleteNoteById(id: Long) {
         viewModelScope.launch {
             noteDataSource.deleteNoteById(id)
             loadNotes()

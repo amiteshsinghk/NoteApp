@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,10 +30,10 @@ import com.example.mydatabase.domain.time.DateTimeUtil
 fun NoteItem(
     note: Note,
     backgroundColor: Color,
-    onNoteClick: ()-> Unit,
-    onDeleteClick: ()-> Unit,
+    onNoteClick: () -> Unit,
+    onDeleteClick: () -> Unit,
     modifier: Modifier = Modifier
-){
+) {
     val formattedDate = remember(note.created) {
         DateTimeUtil.formatNoteDate(note.created)
     }
@@ -70,14 +69,14 @@ fun NoteItem(
         Spacer(modifier = Modifier.height(16.dp))
         Text(
             text = note.content,
-            fontWeight = FontWeight.Light
+            fontWeight = FontWeight.Light,
+            maxLines = 5,
         )
         Spacer(modifier = Modifier.height(16.dp))
-            Text(
-                text = formattedDate,
-                color = Color.DarkGray,
-                modifier = Modifier.align(Alignment.End)
-            )
+        Text(
+            text = formattedDate,
+            color = Color.DarkGray,
+            modifier = Modifier.align(Alignment.End)
+        )
     }
-
 }
