@@ -44,4 +44,5 @@ Run the App on an emulator or device.
 
 ![createNote](https://github.com/user-attachments/assets/2f62af06-d5ed-4b50-a417-2837b079d18b)
 
-
+**Refrence**
+Sql delight: https://sqldelight.github.io/sqldelight/2.0.2/android_sqlite/
