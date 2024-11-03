@@ -29,14 +29,14 @@ fun NoteDetailScreen(
     navController: NavController,
     noteId: Long? = null,
     viewModel: NoteDetailViewModel = hiltViewModel()
-){
+) {
     val state by viewModel.state.collectAsState()
     val hasNoteSaved by viewModel.hasNoteSaved.collectAsState()
-     LaunchedEffect(key1 = hasNoteSaved){
-         if (hasNoteSaved){
-             navController.popBackStack()
-         }
-     }
+    LaunchedEffect(key1 = hasNoteSaved) {
+        if (hasNoteSaved) {
+            navController.popBackStack()
+        }
+    }
 
     Scaffold(
         floatingActionButton = {
@@ -45,18 +45,21 @@ fun NoteDetailScreen(
                 containerColor = Color.Black,
                 shape = CircleShape
 
-            ){
-                Icon(imageVector = Icons.Default.Check,
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Check,
                     contentDescription = "Save Note",
-                    tint = Color.White)
+                    tint = Color.White
+                )
             }
         }
     ) { paddingValues ->
-        Column(modifier = Modifier
-            .background(Color(state.noteColor))
-            .fillMaxSize()
-            .padding(paddingValues)
-            .padding(16.dp)
+        Column(
+            modifier = Modifier
+                .background(Color(state.noteColor))
+                .fillMaxSize()
+                .padding(paddingValues)
+                .padding(16.dp)
         ) {
             TransparentHintTextField(
                 text = state.noteTitle,
@@ -64,7 +67,8 @@ fun NoteDetailScreen(
                 isHintVisible = state.isNoteTitleHintVisible,
                 onValueChanged = viewModel::onNoteTitleChange,
                 onFocusChanged = {
-                    viewModel.onNoteTitleFocusChange(it.isFocused)},
+                    viewModel.onNoteTitleFocusChange(it.isFocused)
+                },
                 singleLine = true,
                 textStyle = TextStyle(fontSize = 20.sp)
             )
@@ -76,7 +80,8 @@ fun NoteDetailScreen(
                 isHintVisible = state.isNoteContentHintVisible,
                 onValueChanged = viewModel::onNoteContentChange,
                 onFocusChanged = {
-                    viewModel.onNoteContentFocusChange(it.isFocused)},
+                    viewModel.onNoteContentFocusChange(it.isFocused)
+                },
                 singleLine = false,
                 textStyle = TextStyle(fontSize = 16.sp),
                 modifier = Modifier.weight(1f)

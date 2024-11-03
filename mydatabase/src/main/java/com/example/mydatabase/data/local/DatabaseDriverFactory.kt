@@ -9,5 +9,4 @@ class DatabaseDriverFactory(private val context: Context) {
     fun createDriver(): SqlDriver {
         return AndroidSqliteDriver(NoteDatabase.Schema, context, "note.db")
     }
-
 }

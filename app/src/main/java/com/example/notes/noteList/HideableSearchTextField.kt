@@ -29,13 +29,13 @@ fun HideableSearchTextField(
     onSearchClicked: () -> Unit,
     onCloseClicked: () -> Unit,
     modifier: Modifier = Modifier
-){
-    Box(modifier = modifier){
+) {
+    Box(modifier = modifier) {
         AnimatedVisibility(
             visible = isSearchActive,
             enter = fadeIn(),
             exit = fadeOut()
-        ){
+        ) {
             OutlinedTextField(
                 value = text,
                 onValueChange = onTextChange,
@@ -79,10 +79,7 @@ fun HideableSearchTextField(
                 )
             }
         }
-
-
     }
-
 }
 
 @Preview(showBackground = true)

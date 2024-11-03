@@ -7,14 +7,14 @@ import com.example.mydatabase.sqldelight.database.NoteDatabase
 
 
 class SqlDelightNoteDataSource(db: NoteDatabase) : NoteDataSource {
-    val queries = db.nodeQueries
+    private val queries = db.nodeQueries
     override suspend fun insertNode(note: Note) {
         queries.insertNote(
             id = note.id,
             title = note.title,
             content = note.content,
             colorHex = note.colorHex,
-            created = note?.created?.let { DateTimeUtil.toEpochMillis(it) } ?: 0L
+            created = DateTimeUtil.toEpochMillis(note.created)
         )
     }
 
@@ -23,7 +23,7 @@ class SqlDelightNoteDataSource(db: NoteDatabase) : NoteDataSource {
     }
 
     override suspend fun getAllNotes(): List<Note> {
-       return queries.getAllNotes().executeAsList().map { it.toNote() }
+        return queries.getAllNotes().executeAsList().map { it.toNote() }
     }
 
     override suspend fun deleteNoteById(id: Long) {

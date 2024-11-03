@@ -9,7 +9,7 @@ data class Note(
     val content: String,
     val colorHex: Long,
     val created: LocalDateTime
-){
+) {
     companion object {
         private val colors = listOf(RedOrangeHex, RedPinkHex, LightGreenHex, BabyBlueHex, VioletHex)
 

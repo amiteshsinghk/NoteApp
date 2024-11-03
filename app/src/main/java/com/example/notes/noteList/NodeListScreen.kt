@@ -37,16 +37,17 @@ import androidx.navigation.NavController
 fun NodeListScreen(
     navController: NavController,
     viewModel: NoteListViewModel = hiltViewModel()
-){
+) {
     val state by viewModel.state.collectAsState()
     LaunchedEffect(key1 = true) {
         viewModel.loadNotes()
     }
     Scaffold(
-        floatingActionButton ={
-            FloatingActionButton(onClick = {
-                navController.navigate("note_detail/-1L")
-            }, containerColor = Color.Black,
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = {
+                    navController.navigate("note_detail/-1L")
+                }, containerColor = Color.Black,
                 shape = CircleShape
             ) {
                 Icon(
@@ -56,8 +57,8 @@ fun NodeListScreen(
                 )
             }
         }
-    ) {paddingValues ->
-        Column (
+    ) { paddingValues ->
+        Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
@@ -72,7 +73,9 @@ fun NodeListScreen(
                     onTextChange = viewModel::onSearchTextChange,
                     onSearchClicked = viewModel::onToggleSearch,
                     onCloseClicked = viewModel::onToggleSearch,
-                    modifier = Modifier.fillMaxWidth().height(90.dp)
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(90.dp)
                 )
                 this@Column.AnimatedVisibility(
                     visible = !state.isSearchActive,
@@ -91,17 +94,18 @@ fun NodeListScreen(
                 modifier = Modifier.weight(1f)
             ) {
                 items(items = state.notes,
-                    key = {it.id!!}) {
+                    key = { it.id!! }) {
                     NoteItem(
                         note = it,
                         backgroundColor = Color(it.colorHex),
                         onNoteClick = {
-                                navController.navigate("note_detail/${it.id}")
+                            navController.navigate("note_detail/${it.id}")
                         },
                         onDeleteClick = {
                             it.id?.let { it1 -> viewModel.deleteNoteById(it1) }
                         },
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier
+                            .fillMaxWidth()
                             .padding(16.dp)
                             .animateItemPlacement()
                     )
