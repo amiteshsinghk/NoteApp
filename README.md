@@ -27,7 +27,9 @@ git clone https://github.com/amiteshsinghk/NoteApp.git
 Run the App on an emulator or device.
 
 🖼️ **Screenshots**
+
 1.Landing page:
+
 ![landingPage](https://github.com/user-attachments/assets/3e22a67e-0b6c-4411-8565-0eaf656a36c9)
 
 2.Search Screen:
