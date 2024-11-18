@@ -34,7 +34,9 @@ class NoteListViewModel @Inject constructor(
 
     fun loadNotes() {
         viewModelScope.launch {
-            savedStateHandle["notes"] = noteDataSource.getAllNotes()
+            noteDataSource.getAllNotes().collect(){
+                savedStateHandle["notes"] = it
+            }
         }
     }
 
