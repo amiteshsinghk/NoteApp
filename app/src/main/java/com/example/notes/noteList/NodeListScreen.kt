@@ -52,7 +52,7 @@ fun NodeListScreen(
             FloatingActionButton(
                 onClick = {
                     navController.navigate("note_detail/-1L")
-//                  isBottomSheetVisible = true
+                    isBottomSheetVisible = true
                 }, containerColor = Color.Black,
                 shape = CircleShape
             ) {
@@ -127,12 +127,19 @@ fun NodeListScreen(
                     isBottomSheetVisible = false // Hide the bottom sheet
                 },
                 onTitleChange = {
-                    Log.d("NoteDetailViewModel", "NoteListScreen :: onTitleChange called :: value==> $it")
+                    Log.d(
+                        "NoteDetailViewModel",
+                        "NoteListScreen :: onTitleChange called :: value==> $it"
+                    )
                     noteDetailViewModel.onNoteTitleChange(it)
                 },
                 onDetailsChange = {
-                    Log.d("NoteDetailViewModel", "NoteListScreen  :: onDetailsChange called :: value==> $it")
-                    noteDetailViewModel.onNoteContentChange(it)},
+                    Log.d(
+                        "NoteDetailViewModel",
+                        "NoteListScreen  :: onDetailsChange called :: value==> $it"
+                    )
+                    noteDetailViewModel.onNoteContentChange(it)
+                },
                 onSaveContent = {
                     Log.d("NoteDetailViewModel", "NoteListScreen  :: onSaveContent called")
                     noteDetailViewModel.saveNote()
