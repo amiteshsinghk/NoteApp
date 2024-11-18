@@ -38,11 +38,18 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    implementation(libs.androidx.lifecycle.livedata)
+    implementation(libs.androidx.lifecycle.livedata)
+    implementation(libs.androidx.lifecycle.livedata)
+    implementation(libs.androidx.lifecycle.livedata)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.sql.delight)
     implementation(libs.date.time)
+    implementation(libs.coroutine.core)
+    implementation(libs.coroutine.android)
+    implementation(libs.sql.delight.coroutine.extension)
 }
 
 sqldelight {
