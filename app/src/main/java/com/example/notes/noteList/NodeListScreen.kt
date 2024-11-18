@@ -1,5 +1,6 @@
 package com.example.notes.noteList
 
+import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -23,6 +24,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -31,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.notes.noteDetail.NoteDetailViewModel
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -39,6 +43,7 @@ fun NodeListScreen(
     viewModel: NoteListViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsState()
+    var isBottomSheetVisible by remember { mutableStateOf(false) }
     LaunchedEffect(key1 = true) {
         viewModel.loadNotes()
     }
@@ -47,6 +52,7 @@ fun NodeListScreen(
             FloatingActionButton(
                 onClick = {
                     navController.navigate("note_detail/-1L")
+//                  isBottomSheetVisible = true
                 }, containerColor = Color.Black,
                 shape = CircleShape
             ) {
@@ -112,5 +118,27 @@ fun NodeListScreen(
                 }
             }
         }
+        if (isBottomSheetVisible) {
+            val noteDetailViewModel: NoteDetailViewModel = hiltViewModel()
+            val detailState by noteDetailViewModel.state.collectAsState()
+            BottomSheetLayout(
+                onDismissRequest = {
+                    Log.d("NoteDetailViewModel", "NoteListScreen :: onDismissRequest called")
+                    isBottomSheetVisible = false // Hide the bottom sheet
+                },
+                onTitleChange = {
+                    Log.d("NoteDetailViewModel", "NoteListScreen :: onTitleChange called :: value==> $it")
+                    noteDetailViewModel.onNoteTitleChange(it)
+                },
+                onDetailsChange = {
+                    Log.d("NoteDetailViewModel", "NoteListScreen  :: onDetailsChange called :: value==> $it")
+                    noteDetailViewModel.onNoteContentChange(it)},
+                onSaveContent = {
+                    Log.d("NoteDetailViewModel", "NoteListScreen  :: onSaveContent called")
+                    noteDetailViewModel.saveNote()
+                }
+            )
+        }
+
     }
 }
