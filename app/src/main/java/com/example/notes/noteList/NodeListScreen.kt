@@ -43,8 +43,9 @@ fun NodeListScreen(
     viewModel: NoteListViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsState()
-    var isBottomSheetVisible by remember { mutableStateOf(false) }
+//    var isBottomSheetVisible by remember { mutableStateOf(false) }
     LaunchedEffect(key1 = true) {
+        Log.d("NodeListScreen","LaunchedEffect called")
         viewModel.loadNotes()
     }
     Scaffold(
@@ -52,7 +53,7 @@ fun NodeListScreen(
             FloatingActionButton(
                 onClick = {
                     navController.navigate("note_detail/-1L")
-                    isBottomSheetVisible = true
+//                    isBottomSheetVisible = true
                 }, containerColor = Color.Black,
                 shape = CircleShape
             ) {
@@ -118,34 +119,34 @@ fun NodeListScreen(
                 }
             }
         }
-        if (isBottomSheetVisible) {
-            val noteDetailViewModel: NoteDetailViewModel = hiltViewModel()
-            val detailState by noteDetailViewModel.state.collectAsState()
-            BottomSheetLayout(
-                onDismissRequest = {
-                    Log.d("NoteDetailViewModel", "NoteListScreen :: onDismissRequest called")
-                    isBottomSheetVisible = false // Hide the bottom sheet
-                },
-                onTitleChange = {
-                    Log.d(
-                        "NoteDetailViewModel",
-                        "NoteListScreen :: onTitleChange called :: value==> $it"
-                    )
-                    noteDetailViewModel.onNoteTitleChange(it)
-                },
-                onDetailsChange = {
-                    Log.d(
-                        "NoteDetailViewModel",
-                        "NoteListScreen  :: onDetailsChange called :: value==> $it"
-                    )
-                    noteDetailViewModel.onNoteContentChange(it)
-                },
-                onSaveContent = {
-                    Log.d("NoteDetailViewModel", "NoteListScreen  :: onSaveContent called")
-                    noteDetailViewModel.saveNote()
-                }
-            )
-        }
+//        if (isBottomSheetVisible) {
+//            val noteDetailViewModel: NoteDetailViewModel = hiltViewModel()
+//            val detailState by noteDetailViewModel.state.collectAsState()
+//            BottomSheetLayout(
+//                onDismissRequest = {
+//                    Log.d("NoteDetailViewModel", "NoteListScreen :: onDismissRequest called")
+//                    isBottomSheetVisible = false // Hide the bottom sheet
+//                },
+//                onTitleChange = {
+//                    Log.d(
+//                        "NoteDetailViewModel",
+//                        "NoteListScreen :: onTitleChange called :: value==> $it"
+//                    )
+//                    noteDetailViewModel.onNoteTitleChange(it)
+//                },
+//                onDetailsChange = {
+//                    Log.d(
+//                        "NoteDetailViewModel",
+//                        "NoteListScreen  :: onDetailsChange called :: value==> $it"
+//                    )
+//                    noteDetailViewModel.onNoteContentChange(it)
+//                },
+//                onSaveContent = {
+//                    Log.d("NoteDetailViewModel", "NoteListScreen  :: onSaveContent called")
+//                    noteDetailViewModel.saveNote()
+//                }
+//            )
+//        }
 
     }
 }
