@@ -1,6 +1,6 @@
 📝 **Note Application**
 
-A beautifully crafted Note-taking application built with Jetpack Compose, following the MVVM clean architecture, and powered by SQLDelight for efficient data management.
+A beautifully crafted Note-taking application built with **Jetpack Compose**, following the MVVM clean architecture, and powered by SQLDelight for efficient data management.
 
 ✨ **Features**
 
@@ -44,4 +44,10 @@ Run the App on an emulator or device.
 
 ![createNote](https://github.com/user-attachments/assets/2f62af06-d5ed-4b50-a417-2837b079d18b)
 
+Bottom sheet is used to  create note.
 
+![createNoteBottomSheet](https://github.com/user-attachments/assets/07378944-3547-4db9-84d2-5b1f83eed528)
+
+
+**Refrence**
+Sql delight: https://sqldelight.github.io/sqldelight/2.0.2/android_sqlite/
