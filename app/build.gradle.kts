@@ -11,6 +11,13 @@ android {
     namespace = "com.example.notes"
     compileSdk = 35
 
+    packaging {
+        resources {
+            excludes += "META-INF/LICENSE.md"
+            excludes += "META-INF/LICENSE-notice.md"
+        }
+    }
+
     defaultConfig {
         applicationId = "com.example.notes"
         minSdk = 24
@@ -18,7 +25,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.example.notes.HiltTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -34,18 +41,18 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.15"
-    }
+//    composeOptions {
+//        kotlinCompilerExtensionVersion = "1.5.15"
+//    }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -63,6 +70,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.work.manager)
 
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -74,6 +82,7 @@ dependencies {
 
     implementation(libs.hilt)
     kapt(libs.kapt)
+//    annotationProcessor(libs.kapt)
     implementation(libs.hilt.navigation)
 
     implementation(libs.sql.delight)
@@ -92,6 +101,7 @@ dependencies {
     debugImplementation(libs.test.ui.manifest)
     testImplementation(libs.sqldelight.driver)
     testImplementation(libs.sqldelight.driver)
+    testImplementation(libs.hilt.android.compiler)
 
     //Instrumentation test
     androidTestImplementation(libs.hilt.android.testing)
@@ -105,6 +115,7 @@ dependencies {
     androidTestImplementation(libs.mock.web.server)
     androidTestImplementation(libs.mockk.android)
     androidTestImplementation(libs.androidx.runner)
+    androidTestImplementation(libs.sqldelight.driver)
 
 }
 //kapt {

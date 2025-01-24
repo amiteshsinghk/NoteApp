@@ -15,6 +15,7 @@ import androidx.navigation.navArgument
 import com.example.notes.noteDetail.NoteDetailScreen
 import com.example.notes.noteList.NodeListScreen
 import com.example.notes.ui.theme.NotesTheme
+import com.example.notes.util.AppConstant
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,8 +26,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             NotesTheme {
                 val navController = rememberNavController()
-                NavHost(navController = navController, startDestination = "note_list") {
-                    composable(route = "note_list") {
+                NavHost(navController = navController, startDestination = AppConstant.NODE_LIST) {
+                    composable(route = AppConstant.NODE_LIST) {
                         NodeListScreen(navController = navController)
                     }
                     composable(
