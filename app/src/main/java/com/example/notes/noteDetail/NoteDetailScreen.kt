@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.notes.util.AppConstant
 
 @Composable
 fun NoteDetailScreen(
@@ -48,7 +49,7 @@ fun NoteDetailScreen(
             ) {
                 Icon(
                     imageVector = Icons.Default.Check,
-                    contentDescription = "Save Note",
+                    contentDescription = AppConstant.SAVE_NOTE,
                     tint = Color.White
                 )
             }
@@ -70,6 +71,7 @@ fun NoteDetailScreen(
                     viewModel.onNoteTitleFocusChange(it.isFocused)
                 },
                 singleLine = true,
+                testTag = AppConstant.TITLE,
                 textStyle = TextStyle(fontSize = 20.sp)
             )
             Spacer(modifier = Modifier.height(16.dp))
@@ -84,6 +86,7 @@ fun NoteDetailScreen(
                 },
                 singleLine = false,
                 textStyle = TextStyle(fontSize = 16.sp),
+                testTag = AppConstant.DESCRIPTION,
                 modifier = Modifier.weight(1f)
             )
         }
