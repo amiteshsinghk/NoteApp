@@ -13,6 +13,7 @@ Efficient Storage: Notes are stored locally with SQLDelight, ensuring quick acce
 Jetpack Compose: For a modern, declarative UI approach.
 MVVM Architecture: Separates concerns to keep the code clean, maintainable, and scalable.
 SQLDelight: Ensures efficient and reliable database interactions.
+Testing: Junit, mockk, truth etc. 
 
 🚀 **Getting Started**
 
