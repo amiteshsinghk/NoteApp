@@ -4,24 +4,24 @@ A beautifully crafted Note-taking application built with **Jetpack Compose**, fo
 
 ✨ **Features**
 
-Add New Notes: Capture important ideas with a simple heading and description.
-Minimal UI: Clean and intuitive design using Jetpack Compose for a seamless user experience.
-Efficient Storage: Notes are stored locally with SQLDelight, ensuring quick access and robust data handling.
+- Add New Notes: Capture important ideas with a simple heading and description.
+- Minimal UI: Clean and intuitive design using Jetpack Compose for a seamless user experience.
+- Efficient Storage: Notes are stored locally with SQLDelight, ensuring quick access and robust data handling.
 
 🛠️ **Tech Stack**
 
-Jetpack Compose: For a modern, declarative UI approach.
-MVVM Architecture: Separates concerns to keep the code clean, maintainable, and scalable.
-SQLDelight: Ensures efficient and reliable database interactions.
-Testing: Junit, mockk, truth etc. 
+- Jetpack Compose: For a modern, declarative UI approach.
+- MVVM Architecture: Separates concerns to keep the code clean, maintainable, and scalable.
+- SQLDelight: Ensures efficient and reliable database interactions.
+- Testing: Junit, mockk, truth etc. 
 
 🚀 **Getting Started**
 
 Prerequisites
-Android Studio (latest version recommended)
-Kotlin
-SQLDelight plugin (for managing database schema)
-Installation
+- Android Studio (latest version recommended)
+- Kotlin
+- SQLDelight plugin (for managing database schema)
+- Installation
 Clone the repository:
 
 git clone https://github.com/amiteshsinghk/NoteApp.git
