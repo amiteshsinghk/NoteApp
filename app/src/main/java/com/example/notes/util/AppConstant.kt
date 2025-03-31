@@ -7,5 +7,7 @@ object AppConstant {
     val DESCRIPTION = "description"
     val ADD_NOTE = "Add Note"
     val SAVE_NOTE = "Save Note"
+    val MY_APP_URL ="myapp://"
+    val NOTE_ID = "noteId"
 
 }

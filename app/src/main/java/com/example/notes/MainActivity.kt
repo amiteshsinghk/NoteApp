@@ -12,6 +12,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import androidx.navigation.navDeepLink
 import com.example.notes.noteDetail.NoteDetailScreen
 import com.example.notes.noteList.NodeListScreen
 import com.example.notes.ui.theme.NotesTheme
@@ -27,19 +28,22 @@ class MainActivity : ComponentActivity() {
             NotesTheme {
                 val navController = rememberNavController()
                 NavHost(navController = navController, startDestination = AppConstant.NODE_LIST) {
-                    composable(route = AppConstant.NODE_LIST) {
+                    composable(route = AppConstant.NODE_LIST,
+                        deepLinks = listOf(navDeepLink { uriPattern = "${AppConstant.MY_APP_URL}${AppConstant.NODE_LIST}" })
+                        ) {
                         NodeListScreen(navController = navController)
                     }
                     composable(
-                        route = "note_detail/{noteId}",
+                        route = "${AppConstant.NODE_DETAIL}/{${AppConstant.NOTE_ID}}",
                         arguments = listOf(
-                            navArgument(name = "noteId") {
+                            navArgument(name = AppConstant.NOTE_ID) {
                                 type = NavType.LongType
                                 defaultValue = -1L
                             }
-                        )
+                        ),
+                        deepLinks = listOf(navDeepLink { uriPattern = "${AppConstant.MY_APP_URL}${AppConstant.NODE_DETAIL}" })
                     ) { backStackEntry ->
-                        val noteId = backStackEntry.arguments?.getLong("noteId") ?: -1L
+                        val noteId = backStackEntry.arguments?.getLong(AppConstant.NOTE_ID) ?: -1L
                         NoteDetailScreen(noteId = noteId, navController = navController)
                     }
                 }
