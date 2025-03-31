@@ -7,6 +7,7 @@ A beautifully crafted Note-taking application built with **Jetpack Compose**, fo
 - Add New Notes: Capture important ideas with a simple heading and description.
 - Minimal UI: Clean and intuitive design using Jetpack Compose for a seamless user experience.
 - Efficient Storage: Notes are stored locally with SQLDelight, ensuring quick access and robust data handling.
+- App Shortcuts: Instantly access the note list or create a new note directly from your device's launcher using long-press app shortcuts (Android 7.1+).
 
 🛠️ **Tech Stack**
 
@@ -45,9 +46,9 @@ Run the App on an emulator or device.
 
 ![createNote](https://github.com/user-attachments/assets/2f62af06-d5ed-4b50-a417-2837b079d18b)
 
-Bottom sheet is used to  create note.
+5.App Shortcut
 
-![createNoteBottomSheet](https://github.com/user-attachments/assets/07378944-3547-4db9-84d2-5b1f83eed528)
+![app_shortcut](https://github.com/user-attachments/assets/d3eddd94-deb1-4be1-b811-52efd21f3a26)
 
 
 **Refrence**
