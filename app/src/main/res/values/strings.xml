@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Notes</string>
+    <string name="shortcut_note_short">Create note</string>
+    <string name="shortcut_note_list">Note List</string>
 </resources>
