@@ -48,7 +48,8 @@ Run the App on an emulator or device.
 
 5.App Shortcut
 
-![app_shortcut](https://github.com/user-attachments/assets/d3eddd94-deb1-4be1-b811-52efd21f3a26)
+![app_shortcut](https://github.com/user-attachments/assets/80bce1a5-57d3-402a-9c95-a0a97c390ce8)
+
 
 
 **Refrence**
